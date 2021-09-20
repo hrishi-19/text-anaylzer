@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text analyser</title>
+    <style>
+        .wrap{
+            width:100%;
+            height:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h1{
+            background:linear-gradient(60deg,red,yellow);
+            padding:5px;
+        }
+        form{
+            width:100%;
+            height:50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .text{
+            width:50vw;
+            margin-top: 10px;
+            resize: none;
+        }
+        button{
+            width:10rem;
+            height:25px;
+            border:none;
+            outline: none;
+            border-radius: none;
+            background-color: green;
+            color:#ddd;
+            font-size: 1rem;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            cursor: pointer;
+            
+
+        }
+    </style>
+</head>
+
+<body style="padding:0px;margin:0px;box-sizing: border-box;">
+    <div class="wrap">
+        <h1>Text Analyser</h1>
+        <h2>Enter your text below</h2>
+        <div class="send-txt">
+            <form action="/analyse" method="GET">
+                <textarea  name="text"class="text"rows="10" cols="15" required placeholder="text"></textarea>
+                <div><input type="checkbox" name="removpunc">remove punctuation</div>
+                <button>Analyse text</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
