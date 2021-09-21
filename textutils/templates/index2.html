@@ -30,7 +30,7 @@
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">Conatct</a>
                     </li>
                 </ul>
             </div>
@@ -42,11 +42,10 @@
     </div>
     <div class="container ">
 
-        <form action="/analyse" method="POST">{% csrf_token %}
+        <form >
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Enter the text</label>
-                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="11"
-                    style="resize: none;"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
             <div class="form-check form-switch">
                 <input class="form-check-input" name="removpunc" type="checkbox" id="flexSwitchCheckDefault">
@@ -61,7 +60,7 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Remove space</label>
             </div>
             <div class="form-check form-switch">
-                <input class="form-check-input" name="removline" type="checkbox" id="flexSwitchCheckCheckedDefault">
+                <input class="form-check-input" name="removlone" type="checkbox" id="flexSwitchCheckCheckedDefault">
                 <label class="form-check-label" for="flexSwitchCheckCheckedDefault">Remove line</label>
             </div>
             <div class="form-check form-switch">
