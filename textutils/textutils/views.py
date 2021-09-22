@@ -1,30 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-def hello(request):
+def index(request):
     return render(request,'index.html')
-def removeline(request):
-    return HttpResponse('''<a href="/">back</a>''')
-def capfirst(request):
-    return HttpResponse('''<a href="/">back</a>''')
-def removepunc(request):
-    #get text
-    djtxt=request.GET.get('text','default')
-    print(djtxt)
-    #analyse text
-    return HttpResponse('''<a href="/">back</a>''')
-def removespace(request):
-    return HttpResponse('''<a href="/">back</a>''')
-def removline(request):
-    return HttpResponse('''<a href="/">back</a>''')
+
 def analyse(request):
-     #get text
+    return render(request,'analyze.html')
+
+def result(request):
+     
     djtxt=request.POST.get('text','default')
     removepunc=request.POST.get('removpunc','off')
     fullcaps=request.POST.get('caps','off')
     removespace=request.POST.get('removspace','off')
     removeline=request.POST.get('removline','off')
     counts=request.POST.get('count','off')
-    #analyse text
+    counter=''
+    purposes=''
     if removepunc =="on":
 
         analyze=''
@@ -34,34 +25,44 @@ def analyse(request):
                 analyze= analyze + char 
 
         djtxt=analyze
-        params={'purpose':'remove punctuations','analyzed_text':analyze}
-        return render(request,'analyze.html',params)
+        purpose='remove punctuations'
+        purposes+=purpose
+        params={'purpose':purposes,'analyzed_text':analyze}
+        return render(request,'result.html',params)
     if(fullcaps =="on"):
         analyze=''
         for char in djtxt:
             analyze= analyze + char.upper()
         djtxt=analyze
-        params={'purpose':'uppercase','analyzed_text':analyze}
-        return render(request,'analyze.html',params)
+        purpose='upper case'
+        purposes+=purpose
+        params={'purpose':purposes,'analyzed_text':analyze}
+        return render(request,'result.html',params)
     elif(removeline=='on'):
         analyze=''
         for char in djtxt:
             if char !="\n" and char !="\r":
                 analyze=analyze+char
         djtxt=analyze
-        params={'purpose':'remove line','analyzed_text':analyze}
-        return render(request,'analyze.html',params)
+        purpose='remove line'
+        purposes+=purpose
+        params={'purpose':purposes,'analyzed_text':analyze}
+        return render(request,'result.html',params)
     elif(counts =="on"):
-        analyze= len(djtxt)
-        params={'purpose':'uppercase','analyzed_text':analyze}
-        return render(request,'analyze.html',params)
+        counter= len(djtxt)
+        purpose='remove punctuations'
+        purposes+=purpose
+        params={'purpose':purposes,'analyzed_text':analyze }
+        return render(request,'result.html',params)
     elif(removespace=='on'):
         analyze=''
         for index,char in enumerate(djtxt):
             if not(djtxt[index]==' 'and djtxt[index+1]==' '):
                 analyze=analyze+char
         djtxt=analyze
-        params={'purpose':'remove line','analyzed_text':analyze}
-        return render(request,'analyze.html',params)
+        purpose='remove space'
+        purposes+=purpose
+        params={'purpose':purposes,'analyzed_text':analyze}
+        return render(request,'result.html',params)
     else:
         return HttpResponse("error")

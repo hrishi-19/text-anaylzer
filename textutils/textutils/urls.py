@@ -19,13 +19,7 @@ from .import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.hello,name='index'),
-    path('analyse',views.analyse,name="analyse")
-
-    #path('removeline/',views.removeline,name='removeline'),
-    #path('capfirst/',views.capfirst,name='capfirst'),
-    #path('removepunc/',views.removepunc,name='removepunc'),
-    #path('removespace/',views.removespace,name='removepunc'),
-
-
+    path('',views.index,name='index'),
+    path('analyse',views.analyse,name="analyse"),
+    path('result',views.result,name="result")
 ]
