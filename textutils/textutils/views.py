@@ -13,8 +13,7 @@ def result(request):
     fullcaps=request.POST.get('caps','off')
     removespace=request.POST.get('removspace','off')
     removeline=request.POST.get('removline','off')
-    counts=request.POST.get('count','off')
-    counter=''
+    counter= len(djtxt)
     purposes=''
     if removepunc =="on":
 
@@ -27,7 +26,7 @@ def result(request):
         djtxt=analyze
         purpose='remove punctuations'
         purposes+=purpose
-        params={'purpose':purposes,'analyzed_text':analyze}
+        params={'purpose':purposes,'analyzed_text':analyze,'counts':counter }
         return render(request,'result.html',params)
     if(fullcaps =="on"):
         analyze=''
@@ -36,7 +35,7 @@ def result(request):
         djtxt=analyze
         purpose='upper case'
         purposes+=purpose
-        params={'purpose':purposes,'analyzed_text':analyze}
+        params={'purpose':purposes,'analyzed_text':analyze,'counts':counter }
         return render(request,'result.html',params)
     elif(removeline=='on'):
         analyze=''
@@ -46,13 +45,7 @@ def result(request):
         djtxt=analyze
         purpose='remove line'
         purposes+=purpose
-        params={'purpose':purposes,'analyzed_text':analyze}
-        return render(request,'result.html',params)
-    elif(counts =="on"):
-        counter= len(djtxt)
-        purpose='remove punctuations'
-        purposes+=purpose
-        params={'purpose':purposes,'analyzed_text':analyze }
+        params={'purpose':purposes,'analyzed_text':analyze,'counts':counter }
         return render(request,'result.html',params)
     elif(removespace=='on'):
         analyze=''
@@ -62,7 +55,7 @@ def result(request):
         djtxt=analyze
         purpose='remove space'
         purposes+=purpose
-        params={'purpose':purposes,'analyzed_text':analyze}
+        params={'purpose':purposes,'analyzed_text':analyze,'counts':counter }
         return render(request,'result.html',params)
     else:
         return HttpResponse("error")

@@ -11,6 +11,14 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
     <title>Text Analyzer</title>
+    <style>
+        .form-label{
+            font-family: 'Sans-sarif';
+            color:rgba(0,0,0,0.6);
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,7 +48,7 @@
 
         <form action="/result" method="POST">{% csrf_token %}
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Enter the text</label>
+                <label for="exampleFormControlTextarea1" class="form-label"><strong>Enter the text</strong></label>
                 <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="11"
                     style="resize: none;"></textarea>
             </div>
@@ -59,10 +67,6 @@
             <div class="form-check form-switch">
                 <input class="form-check-input" name="removline" type="checkbox" id="flexSwitchCheckCheckedDefault">
                 <label class="form-check-label" for="flexSwitchCheckCheckedDefault">Remove line</label>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" name="count" type="checkbox" id="flexSwitchCheckCheckedDefault">
-                <label class="form-check-label" for="flexSwitchCheckCheckedDefault">character count </label>
             </div>
 
             <button type="submit" class="btn btn-success">Analyze text</button>
